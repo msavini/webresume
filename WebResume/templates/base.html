@@ -14,8 +14,8 @@
 </head>
 
 <body>
-	<nav class= "w-100 navbar navbar-expand-lg" id ="top-nav" style="min-width:98.9vw!important;overflow:hidden!important;">
-		<div class= "container" style = "margin-left: 10px; padding-right: 10px;">
+	<nav class= "container-fluid navbar navbar-expand-lg" id ="top-nav">
+		<div class= "container-fluid" style = "padding-right: 10px;">
 			<a class="navbar-brand" href="{% url 'index' %}" style="padding-left:0!important;padding-right:0!important;">
 					<img height="50px" src="{% static "logo1.png"%}" style="position:relative;top:-0px;padding-top:0px;padding-bottom:0px" alt="Michael J. Savini">
 					{%if current != 'index' %}

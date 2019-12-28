@@ -4,10 +4,9 @@
 
 {% block page_content %}
 
-<div class="w-100 home-background2">
-	<img height="200%" src="{% static "crop-mountains.jpg"%}"alt="no-background-image">
+<div class="home-background container-fluid " style="padding:0!important;">
+	<img width="100%" src="{% static "crop-mountains.jpg"%}"alt="no-background-image">
 </div>
-
 <div class="col-md-2 resume-titling">
 	<h1>My Resume</h1>
 </div>
@@ -23,156 +22,154 @@
 	<img style="position:absolute;z-index:2;top:-100px;left:-85px;" height="200px" src="{% static "resume1.png"%}"alt="image-not-found">
 </div>
 -->
-<div class="col-md-12 background-detail3">
-	<div class="col-md-12 resume-column" style="display:block;">
-		<h3 style="padding-top:0;min-width:100%"> Skills </h3>	
-		<ul style="margin-bottom:5px;list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			{% for skill in Skills %}
-				{% if skill.type == "Technical" %}
-				<li style="font-weight:600;">{{skill.title}}</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-		<!--<h3> Social Skills </h3>-->
-		<ul style="margin-bottom:5px;list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			{% for skill in Skills %}
-				{% if skill.type == "Social" %}
-				<li>{{skill.title}}</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-		<!--<h3> Other Skills </h3>-->
-		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			{% for skill in Skills %}
-				{% if skill.type == "Methodology" %}
-				<li>{{skill.title}}</li>
-				{% endif %}
-			{% endfor %}
-			{% for skill in Skills %}
-				{% if skill.type == "OS" %}
-				<li>{{skill.title}}</li>
-				{% endif %}
-			{% endfor %}
-			{% for skill in Skills %}
-				{% if skill.type == "Program" %}
-				<li>{{skill.title}}</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-	</div>
-	
-	<div class="col-md-12 resume-column" style="display:block;">
-		<h3> Computer Science Coursework <p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p></h3>
-		<ul id="{% if show_item == 'cCourse' %} rc-detailShow{% else %} rc-detailHide{% endif %}" style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			{% for course in CodingCourses %}
-				<li>
-					{% if show_item == 'cCourse' %}
-						{%if course.pk == cCourse.pk %}
-						<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume' %}">
-					
-							{{course.title}}
-						</a>
+<div class="container-fluid">
+	<div class="background-detail3" style="width:inherit;height:500px;overflow-y:auto;">
+		<div class="text-center resume-column" style="display:block;">
+			<h3 style="padding-top:0;min-width:80%"> Skills </h3>	
+			<ul style="margin-bottom:5px;list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				{% for skill in Skills %}
+					{% if skill.type == "Technical" %}
+					<li style="font-weight:600;">{{skill.title}}</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+			<!--<h3> Social Skills </h3>-->
+			<ul style="margin-bottom:5px;list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				{% for skill in Skills %}
+					{% if skill.type == "Social" %}
+					<li>{{skill.title}}</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+			<!--<h3> Other Skills </h3>-->
+			<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				{% for skill in Skills %}
+					{% if skill.type == "Methodology" %}
+					<li>{{skill.title}}</li>
+					{% endif %}
+				{% endfor %}
+				{% for skill in Skills %}
+					{% if skill.type == "OS" %}
+					<li>{{skill.title}}</li>
+					{% endif %}
+				{% endfor %}
+				{% for skill in Skills %}
+					{% if skill.type == "Program" %}
+					<li>{{skill.title}}</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+		
+		<div class="col-md-12 resume-column" style="display:block;">
+			<h3> Computer Science Coursework <p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p></h3>
+			<ul id="{% if show_item == 'cCourse' %} rc-detailShow{% else %} rc-detailHide{% endif %}" style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				{% for course in CodingCourses %}
+					<li>
+						{% if show_item == 'cCourse' %}
+							{%if course.pk == cCourse.pk %}
+							<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume' %}">
+						
+								{{course.title}}
+							</a>
+							{% else %}
+							<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_cCourse' course.pk course.slug %}">
+								{{course.title}}
+							</a>
+							{% endif %}
 						{% else %}
 						<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_cCourse' course.pk course.slug %}">
 							{{course.title}}
 						</a>
 						{% endif %}
-					{% else %}
-					<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_cCourse' course.pk course.slug %}">
-						{{course.title}}
-					</a>
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
-		{% if show_item == 'cCourse' %}
-		<p id="showable" style="padding:5px; padding-left:10px; border:none; background-color:#617285; border-radius:5px;" class="detail-shown"> 
-			Language(s): <a style="color:#D4D8F6; font-weight:600;"> &nbsp;{{cCourse.languages}} </a><br> 
-			{{cCourse.description}}
-		</p>
-		{% endif %}
-	</div>
-	
-	<div class="col-md-12 resume-column" style="display:block;">
-		<h3> Other Coursework 
-		<p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p>
-		</h3>
-		<ul id="{% if show_item == 'cCourse' %} rc-detailShow{% else %} rc-detailHide{% endif %}" style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			{% for course in OtherCourses %}
-				<li>
-					{% if show_item == 'oCourse' %}
-						{%if course.pk == oCourse.pk %}
-						<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume' %}">
-					
-							{{course.title}}
-						</a>
+					</li>
+				{% endfor %}
+			</ul>
+			{% if show_item == 'cCourse' %}
+			<p id="showable" style="padding:5px; padding-left:10px; border:none; background-color:#617285; border-radius:5px;" class="detail-shown"> 
+				Language(s): <a style="color:#D4D8F6; font-weight:600;"> &nbsp;{{cCourse.languages}} </a><br> 
+				{{cCourse.description}}
+			</p>
+			{% endif %}
+		</div>
+		
+		<div class="col-md-12 resume-column" style="display:block;">
+			<h3> Other Coursework 
+			<p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p>
+			</h3>
+			<ul id="{% if show_item == 'cCourse' %} rc-detailShow{% else %} rc-detailHide{% endif %}" style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				{% for course in OtherCourses %}
+					<li>
+						{% if show_item == 'oCourse' %}
+							{%if course.pk == oCourse.pk %}
+							<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume' %}">
+						
+								{{course.title}}
+							</a>
+							{% else %}
+							<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_oCourse' course.pk course.slug %}">
+								{{course.title}}
+							</a>
+							{% endif %}
 						{% else %}
 						<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_oCourse' course.pk course.slug %}">
 							{{course.title}}
 						</a>
 						{% endif %}
-					{% else %}
-					<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_oCourse' course.pk course.slug %}">
-						{{course.title}}
-					</a>
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
-		{% if show_item == 'oCourse' %}
-		<p id="showable" style="padding:5px; padding-left:10px; border:none; background-color:#617285; border-radius:5px;" class="detail-shown"> 
-			{{oCourse.description}}
-		</p>
-		{% endif %}
-	</div>
-	
-	<div class="col-md-12 resume-column" style="display:inline-block;">
-		<h3> Awards 
-		<p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p>
-		</h3>
-		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			{% for award in Awards %}
-				<li>
-					{% if show_item == 'cAward' %}
-						{%if award.pk == cAward.pk %}
-						<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume' %}">
-					
-							{{award.title}}
-						</a>
+					</li>
+				{% endfor %}
+			</ul>
+			{% if show_item == 'oCourse' %}
+			<p id="showable" style="padding:5px; padding-left:10px; border:none; background-color:#617285; border-radius:5px;" class="detail-shown"> 
+				{{oCourse.description}}
+			</p>
+			{% endif %}
+		</div>
+		
+		<div class="col-md-12 resume-column" style="display:inline-block;">
+			<h3> Awards 
+			<p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p>
+			</h3>
+			<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				{% for award in Awards %}
+					<li>
+						{% if show_item == 'cAward' %}
+							{%if award.pk == cAward.pk %}
+							<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume' %}">
+						
+								{{award.title}}
+							</a>
+							{% else %}
+							<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_cAward' award.pk award.slug %}">
+								{{award.title}}
+							</a>
+							{% endif %}
 						{% else %}
 						<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_cAward' award.pk award.slug %}">
 							{{award.title}}
 						</a>
 						{% endif %}
-					{% else %}
-					<a id="clickable-item" style="text-decoration:none;" href="{% url 'webresume_cAward' award.pk award.slug %}">
-						{{award.title}}
-					</a>
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
-		{% if show_item == 'cAward' %}
-		<p id="showable" style="padding:5px; padding-left:10px; border:none; background-color:#617285; border-radius:5px;" class="detail-shown"> 
-			{{cAward.description}}
-		</p>
-		{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+			{% if show_item == 'cAward' %}
+			<p id="showable" style="padding:5px; padding-left:10px; border:none; background-color:#617285; border-radius:5px;" class="detail-shown"> 
+				{{cAward.description}}
+			</p>
+			{% endif %}
+		</div>
+		
+		<div class="col-md-12 resume-column" style="display:inline-block; padding-bottom:100px;">
+			<h3> Work Experience </h3>
+			<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+				<!--
+				<li id="no-hover"> Nothing here yet, but I am open to new job opportunities! Please view my <a style="display:inline;color:#B1C3E7; font-weight:600; text-decoration:none;" href="{% url 'portfolio' %}" id="link-color">Portfolio</a> for examples of my work.</li>
+				-->
+				<li id="no-hover"> Nothing here yet, but I am open to new job opportunities!</li>
+			</ul>
+		</div>
+		
 	</div>
-	
-	<div class="col-md-12 resume-column" style="display:inline-block; padding-bottom:100px;">
-		<h3> Work Experience </h3>
-		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
-			<!--
-			<li id="no-hover"> Nothing here yet, but I am open to new job opportunities! Please view my <a style="display:inline;color:#B1C3E7; font-weight:600; text-decoration:none;" href="{% url 'portfolio' %}" id="link-color">Portfolio</a> for examples of my work.</li>
-			-->
-			<li id="no-hover"> Nothing here yet, but I am open to new job opportunities!</li>
-		</ul>
-	</div>
-	
-</div>
-
-<div class="col-md-10">
-
 </div>
 <script>
         var patt = /^.+\/resume/;
