@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}About{% endblock %}
+
+{% block page_content %}
+<div class="w-100 home-background2">
+	<img height="1280px" src="{% static "crop-mountains.jpg"%}"alt="no-background-image">
+</div>
+<div class="col-md-2 resume-titling">
+	<h1>My Resume</h1>
+</div>
+<div class="col-md-12 background-detail">
+	<div class="col-md-12 resume-column" style="display:inline-block;">
+		<h3> Work Experience </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			<li id="no-hover"> Nothing here yet, but I am open to new job opportunities! Please view my <a style="display:inline;color:#B1C3E7; font-weight:600; text-decoration:none;" href="{% url 'portfolio' %}" id="link-color">Portfolio</a> for examples of my work.</li>
+		</ul>
+	</div>
+	<div class="col-md-12 resume-column" style="display:block;">
+		<h3> Computer Science Coursework </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			{% for course in CodingCourses %}
+				<li>
+					<a style="text-decoration:none;" href="{% url 'webresume_cCourse' course.pk course.slug %}">
+						{{course.title}}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+		<p></p>
+	</div>
+	
+	<div class="col-md-12 resume-column" style="display:block;">
+		<h3> Other Relevant Studies </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			{% for course in OtherCourses %}
+				<li>{{course.title}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<div class="col-md-12 resume-column" style="display:block;">
+		<h3> Relevant Technical Skills </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			{% for skill in Skills %}
+				{% if skill.type == "Technical" %}
+				<li>{{skill.title}}</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+		<h3> Social Skills </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			{% for skill in Skills %}
+				{% if skill.type == "Social" %}
+				<li>{{skill.title}}</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+		<h3> Other Skills </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			{% for skill in Skills %}
+				{% if skill.type == "Methodology" %}
+				<li>{{skill.title}}</li>
+				{% endif %}
+			{% endfor %}
+			{% for skill in Skills %}
+				{% if skill.type == "OS" %}
+				<li>{{skill.title}}</li>
+				{% endif %}
+			{% endfor %}
+			{% for skill in Skills %}
+				{% if skill.type == "Program" %}
+				<li>{{skill.title}}</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<div class="col-md-12 resume-column" style="display:inline-block;">
+		<h3> Awards </h3>
+		<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
+			{% for award in Awards %}
+				<li>{{award.title}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+<div class="col-md-10">
+
+</div>
+{% endblock %}

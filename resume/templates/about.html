@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}About{% endblock %}
+
+{% block page_content %}
+<div class="w-100 home-background2">
+	<img height="1280px" src="{% static "crop-mountains.jpg"%}"alt="no-background-image">
+</div>
+
+<div class="col-md-12 background-detail about-column">
+
+</div>
+
+<script>
+	$('#dg-container').gallery();
+</script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}About{% endblock %}
+
+{% block page_content %}
+<div class="w-100 home-background">
+	<img height="1280px" src="{% static "crop-mountains.jpg"%}"alt="no-background-image">
+</div>
+<div class="col-md-2 resume-titling">
+	<h1>Contact Info</h1>
+</div>
+<div></div>
+<div class="col-md-12">
+	<div class="background-detail" style="display:inline-block; margin-top:30px;min-width:48.0%;margin-left: 10px;overflow:hidden;padding-top:10px;padding-bottom:10px;">
+		<div class="col-md-6 tech-slideshow">
+		  <div class="mover-1"></div>
+		  <div class="mover-2"></div>
+		</div>
+	</div>
+	<div class="offset-md-6 background-override" style="height:220px; min-width:49.0%;padding-top:10px; padding-bottom:10px; display:inline-block;">
+		<div class="contact-grid">
+			<!--
+			<div class="contact-grid-item">
+				<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="michael-savini"><a class="LI-simple-link" href='https://www.linkedin.com/in/michael-savini?trk=profile-badge'>Michael J. Savini</a></div>
+			</div>
+			-->
+			<div class="contact-grid-item"> 
+				<p style="display:inline;font-weight:600;">Michael J. Savini</p>
+				
+				<p>
+				Email: michaeljsavini@gmail.com<br>
+				Phone: (845) 527-0947<br>
+				Available: 8AM to 8PM Weekdays<br>
+				&emsp;&emsp;&emsp;&emsp;&nbsp;11AM to 9PM Weekends<br>
+				&emsp;&emsp;&emsp;&emsp;&nbsp;(or by appointment)<br>
+				</p>
+				<a style="display:inline-block;" href="https://www.linkedin.com/in/michael-savini"> LinkedIn </a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
