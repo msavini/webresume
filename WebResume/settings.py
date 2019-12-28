@@ -26,7 +26,9 @@ SECRET_KEY = 'j_yhmf5)e_0f#owmc&ayrn#h9afm6q)a8x-=dg54up=#&yzrb!'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-    'localhost']
+    'localhost',
+	'mjsavini.com',
+	'webresume-savini.herokuapp.com']
 
 
 # Application definition
@@ -83,7 +85,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
@@ -125,3 +127,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
