@@ -25,7 +25,7 @@
 <div class="container-fluid">
 	<div class="background-detail3" style="width:inherit;height:500px;overflow-y:auto;">
 		<div class="text-center resume-column" style="display:block;">
-			<h3 style="padding-top:0;min-width:80%"> Skills </h3>	
+			<h3 id="skills-section" style="padding-top:0;min-width:80%"> Skills </h3>	
 			<ul style="margin-bottom:5px;list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
 				{% for skill in Skills %}
 					{% if skill.type == "Technical" %}
@@ -62,7 +62,7 @@
 		</div>
 		
 		<div class="col-md-12 resume-column" style="display:block;">
-			<h3> Computer Science Coursework <p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p></h3>
+			<h3 id="cs-section"> Computer Science Coursework <p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p></h3>
 			<ul id="{% if show_item == 'cCourse' %} rc-detailShow{% else %} rc-detailHide{% endif %}" style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
 				{% for course in CodingCourses %}
 					<li>
@@ -94,7 +94,7 @@
 		</div>
 		
 		<div class="col-md-12 resume-column" style="display:block;">
-			<h3> Other Coursework 
+			<h3 id="other-coursework-section"> Other Coursework 
 			<p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p>
 			</h3>
 			<ul id="{% if show_item == 'cCourse' %} rc-detailShow{% else %} rc-detailHide{% endif %}" style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
@@ -127,7 +127,7 @@
 		</div>
 		
 		<div class="col-md-12 resume-column" style="display:inline-block;">
-			<h3> Awards 
+			<h3 id="awards-section"> Awards 
 			<p style="padding:1px; margin:1px;text-align:right;display:inline;border:none;"> (interactive) </p>
 			</h3>
 			<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
@@ -160,7 +160,7 @@
 		</div>
 		
 		<div class="col-md-12 resume-column" style="display:inline-block; padding-bottom:100px;">
-			<h3> Work Experience </h3>
+			<h3 id="work-section"> Work Experience </h3>
 			<ul style="list-style-type:none;padding:0;margin-left:10px;margin-right:10px;">
 				<!--
 				<li id="no-hover"> Nothing here yet, but I am open to new job opportunities! Please view my <a style="display:inline;color:#B1C3E7; font-weight:600; text-decoration:none;" href="{% url 'portfolio' %}" id="link-color">Portfolio</a> for examples of my work.</li>
@@ -171,8 +171,8 @@
 		
 	</div>
 </div>
-<script>
-        var patt = /^.+\/resume/;
+<!--
+var patt = /^.+\/resume/;
 		
 		if (patt.test(document.referrer)){
 			document.addEventListener("DOMContentLoaded", function(event) { 
@@ -187,6 +187,10 @@
 		window.onbeforeunload = function(e) {
 				localStorage.setItem('scrollpos', window.scrollY);
 			}
+
+-->
+<script>
+		
 		
 		$("#clickable-item").click(function(){
 			$("#showable").toggle();
